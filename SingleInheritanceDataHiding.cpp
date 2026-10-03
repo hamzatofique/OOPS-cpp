@@ -2,9 +2,10 @@
 using namespace std;
 
 class Account {
+    private:
     double balance;                     // hidden
 public:
-    Account() : balance(0) {}
+    Account() : balance(0) {} //default ctor
     void deposit(double amt) { 
         if (amt > 0) balance += amt; }
     double getBalance() const {
@@ -14,7 +15,7 @@ public:
 class SavingsAccount : public Account {
 public:
     void addInterest(double rate) {
-        deposit(getBalance() * rate / 100);   // uses base's public functions only
+        deposit(getBalance() * rate / 100);   // uses base's public functions only 
     }
 };
 
