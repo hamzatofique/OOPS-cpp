@@ -38,9 +38,10 @@ class Weapon{
     }
     void setDamage(int d){
         if(d<0 || d>100){
-            cout<<"Invalid Damage , Please Enter a valid Damage "<<endl;
+            cout<<"Invalid Damage , Please Enter a valid Damage "<<d<<endl;
         }
         else 
+        cout<<"Damage is given"<<d;
         damage=d;
     }
     static int getWeaponcount(){ //static member function to return static data member
