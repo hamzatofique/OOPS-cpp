@@ -1,0 +1,52 @@
+Overview
+
+This program simulates a small game system that keeps track of Players and the Weapons they carry. It is not a playable game. It is a model of the objects in a game, built to practice C++ classes: static members, const members, dynamic memory, deep copy, and composition.
+
+Each Player has a Weapon, so a Weapon is created and destroyed together with its Player.
+
+Weapon class
+
+A Weapon stores:
+
+Weapon ID: a unique number, taken from a shared counter. It is const, so it never changes after creation.
+Name: stored in dynamic memory (char*), for example "Sword".
+Damage: a number from 0 to 100. Invalid values are rejected.
+
+It also keeps a static count of how many Weapons have been created.
+
+Player class
+
+A Player stores:
+
+Player ID: unique and const, from a shared counter.
+Nickname: stored in dynamic memory (char*).
+Health: starts at 100 and goes down when the Player takes damage. It never goes below 0.
+Weapon: a Weapon object inside the Player (composition).
+
+It also keeps a static count of how many Players have been created.
+
+What the program does (main)
+Creates Player p1 ("Zed", with a Sword of damage 40). The Weapon is created first, then the Player.
+Copies p1 into p2. The copy gets its own new ID, its own nickname memory, and its own new Weapon (a deep copy).
+Changes only p2: the first letter of the nickname, the weapon damage (75), and the health (takes 30 damage). An invalid damage of 150 is rejected.
+Shows both Players. p1 is unchanged, which proves the copy is independent.
+Creates a const Player p3 ("Kira", with a Bow). A const Player can only be read, not modified, so it uses const functions like show().
+Prints the totals: 3 Players and 3 Weapons.
+Ends. Objects are destroyed in reverse order of creation: p3, then p2, then p1. Each Player's destructor runs first, then its Weapon is destroyed.
+Concepts demonstrated
+Concept	Where it appears
+Static variable and function	weaponCount, playerCount, getPlayerCount()
+Const data member	weaponID, playerID
+Member initialization list	setting IDs, health, and the Weapon in the constructor
+Dynamic memory	char* wname, char* nick with new[] and delete[]
+Deep copy constructor	Player and Weapon copies don't share memory
+Destructor	frees the names and prints a message
+Getters and setters	getDamage(), setDamage(), setNickAtIndex()
+Const functions and const object	show() on const Player p3
+Composition	Player has a Weapon
+Sample output
+Player 1: Zed | Health 100 | Weapon 1: sword (damage 40)
+Player 2: Ned | Health 70  | Weapon 2: sword (damage 75)
+Player 3: Kira | Health 100 | Weapon 3: Bow (damage 55)
+Total players: 3
+Total weapons: 3

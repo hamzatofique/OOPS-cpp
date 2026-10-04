@@ -18,10 +18,7 @@ class Car : public Vehicle{
     void drive(){
         start();
         cout<<"Car driving" <<endl;
-
     }
-
-
 };
 class ElectricCar : public Car{
     private:
