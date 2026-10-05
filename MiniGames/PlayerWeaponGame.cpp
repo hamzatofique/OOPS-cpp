@@ -64,6 +64,7 @@ class Player{
         return p;
     }
     public:
+    //used pointer so that it get alter in original object
     Player(const char* n,const char* wName,int wDamage): playerID(++playerCount),nick(dup(n)),health(100),weapon(wName,wDamage)//calling composition
     {
      cout<<"Player Created : "<<playerID<<endl;
