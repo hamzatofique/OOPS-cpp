@@ -35,7 +35,19 @@ class Complex{
     void print()const{
         cout<<"("<<real<<","<<img<<")"<<endl;
     }
+     friend istream& operator>>(istream& in, Complex &c){
+        in>>c.real>>c.img;
+        return in;
+
+    }//prototype defined inside for ostream outside the class
+    //friend is used only for prototype
+    friend ostream& operator<<(ostream& out, Complex &c);
 };
+ostream& operator<<(ostream& out, Complex &c){
+        out<<"the real value: "<<c.real<<" "<<"the imaginary value : "<<c.img<<endl;
+        return out;
+
+    }
 int main(){
     Complex c1(2,3);
     Complex c2(5,6);
@@ -53,5 +65,7 @@ int main(){
         cout<<"The compund divide is : ";
     c1/=c2;
     c1.print();
+    cin>>c2;
+    cout<<c2;
 
 }
